@@ -1,0 +1,22 @@
+/share_me_backend/node_modules
+/share_me_frontend/node_modules
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/share_me_backend/.pnp
+
+/share_me_backend/.pnp
+
+
+# testing
+/coverage
+/share_me_backend/coverage
+/share_me_frontend/coverage
+
+# production
+/build
+/share_me_backend/build
+/share_me_frontend/build
+
