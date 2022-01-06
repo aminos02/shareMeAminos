@@ -1,7 +1,7 @@
 export default {
   name: "pin",
   title: "Pin",
-  type: "string",
+  type: "document",
   fields: [
     {
       name: "title",
