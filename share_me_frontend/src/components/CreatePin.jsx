@@ -9,7 +9,7 @@ import { categories } from "../utils/data";
 const CreatePin = ({ user }) => {
   const [title, setTitle] = useState("");
   const [about, setAbout] = useState("");
-  const [destination, setDestination] = useState("");
+  // const [destination, setDestination] = useState("");
   const [loading, setLoading] = useState(false);
   const [fields, setFields] = useState(false);
   const [category, setCategory] = useState(null);
@@ -48,7 +48,7 @@ const CreatePin = ({ user }) => {
             _type:'pin',
             title,
             about,
-            destination,
+            // destination,
             image:{
                 _type:'image',
                 asset:{
@@ -116,7 +116,7 @@ const CreatePin = ({ user }) => {
                 <img
                   src={imageAsset?.url}
                   alt="uploaded-pic"
-                  className="h-full w-full"
+                  className="h-full w-full object-cover"
                 />
                 <button
                   type="button"
@@ -148,13 +148,13 @@ const CreatePin = ({ user }) => {
             placeholder="Tell everyone what your Pin is about"
             className="outline-none text-base sm:text-lg border-b-2 border-gray-200 p-2"
           />
-          <input
+          {/* <input
             type="url"
             vlaue={destination}
             onChange={(e) => setDestination(e.target.value)}
             placeholder="Add a destination link"
             className="outline-none text-base sm:text-lg border-b-2 border-gray-200 p-2"
-          />
+          /> */}
 
           <div className="flex flex-col">
             <div>

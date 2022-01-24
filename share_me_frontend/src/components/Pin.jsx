@@ -12,7 +12,7 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
   const [postHovered, setPostHovered] = useState(false);
   const user = fetchUser();
   const alreadySaved = !!save?.find(
-    (item) => item.postedBy._id === user.googleId
+    (item) => item.postedBy._id === user?.googleId
   );
   const savePin = (id) => {
     client
@@ -21,10 +21,10 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
       .insert("after", "save[-1]", [
         {
           _key: uuidv4(),
-          userId: user.googleId,
+          userId: user?.googleId,
           postedBy: {
             _type: "postedBy",
-            _ref: user.googleId,
+            _ref: user?.googleId,
           },
         },
       ])
@@ -41,7 +41,7 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
   };
 
   return (
-    <div className="m-2">
+    <div className="m-3">
       <div
         onMouseEnter={() => setPostHovered(true)}
         onMouseLeave={() => setPostHovered(false)}
@@ -96,7 +96,12 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
                     : destination.slice(8)}
                 </a>
               )}
-              {postedBy?._id === user.googleId && (
+              <Link to={`user-profile/${postedBy?._id}`}  className="flex gap-2 mt-2 items-center">
+            <img src={postedBy?.image} 
+            className="w-8 h-8 rounded-full object-cover"
+            alt="user-profile" />
+            </Link>
+              {postedBy?._id === user?.googleId && (
                 <button
                   type="button"
                   onClick={(e) => {
@@ -112,14 +117,14 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
           </div>
         )}
       </div>
-      <Link to={`user-profile/${postedBy?._id}`}  className="flex gap-2 mt-2 items-center">
+      {/* <Link to={`user-profile/${postedBy?._id}`}  className="flex gap-2 mt-2 items-center">
             <img src={postedBy?.image} 
             className="w-8 h-8 rounded-full object-cover"
             alt="user-profile" />
             <p className="font-semibold capitalize">
               {postedBy?.userName}
             </p>
-      </Link>
+      </Link> */}
     </div>
   );
 };
